@@ -418,10 +418,18 @@ function setupHeaderBehavior() {
   const toggle = header?.querySelector(".nav-toggle");
   const menu = header?.querySelector(".nav-links");
   const toggleLabel = toggle?.querySelector("span");
+  const isHomePage = document.body.dataset.page === "accueil";
 
   const updateHeader = () => {
     if (!header) return;
-    header.classList.toggle("is-scrolled", window.scrollY > 18 || menu?.classList.contains("is-open"));
+
+    const menuIsOpen = menu?.classList.contains("is-open");
+    const headerThreshold = isHomePage ? window.innerHeight * 0.72 : 18;
+    header.classList.toggle("is-scrolled", window.scrollY > headerThreshold || menuIsOpen);
+
+    if (isHomePage) {
+      document.body.classList.toggle("show-whatsapp", window.scrollY > window.innerHeight * 0.9);
+    }
   };
 
   const setMenuState = (isOpen) => {
