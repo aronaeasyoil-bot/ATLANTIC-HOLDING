@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ATLANTIC HOLDING | Contact</title>
+    <meta
+      name="description"
+      content="Contactez ATLANTIC HOLDING pour un partenariat financier ou un échange sur ses projets en Afrique de l'Ouest."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    >
+    <link rel="stylesheet" href="assets/css/site.css">
+  </head>
+  <body data-page="contact">
+    <header class="site-header" data-site-header></header>
+
+    <main>
+      <section
+        class="page-hero"
+        style="background-image: url('assets/images/restaurant-front.jpg')"
+      >
+        <div class="page-hero__shell">
+          <p class="eyebrow">Contact</p>
+          <h1 class="page-hero__title">Échanger avec ATLANTIC HOLDING</h1>
+          <p class="page-hero__copy">
+            Pour un partenariat financier, une demande d'information ou une prise de contact stratégique,
+            utilisez les coordonnées ci-dessous ou préparez votre message via le formulaire.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-shell contact-layout">
+          <div class="surface-panel reveal">
+            <p class="eyebrow">Coordonnées</p>
+            <h2 class="section-title">Présence et contacts du groupe</h2>
+            <p>
+              ATLANTIC HOLDING accompagne des discussions sur les projets immobiliers, automobiles, les
+              partenariats régionaux et les opportunités d'investissement par marché.
+            </p>
+            <div class="contact-cards" data-contact-cards></div>
+            <div class="surface-panel reveal" style="margin-top: 22px;">
+              <p class="eyebrow eyebrow--soft">Typologies de partenariat</p>
+              <p>
+                Partenariat stratégique, financement de projet, développement par pays, co-investissement,
+                accompagnement opérationnel ou structuration de dossiers investisseurs.
+              </p>
+            </div>
+          </div>
+
+          <div class="surface-panel reveal">
+            <p class="eyebrow">Formulaire</p>
+            <h2 class="section-title">Préparer votre demande</h2>
+            <p>
+              Le formulaire prépare automatiquement votre message pour l'équipe du groupe avec les éléments
+              essentiels à une première qualification.
+            </p>
+            <form class="contact-form" data-contact-form>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="nom">Nom</label>
+                  <input id="nom" name="nom" type="text" required>
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" required>
+                </div>
+                <div class="field">
+                  <label for="telephone">Téléphone</label>
+                  <input id="telephone" name="telephone" type="tel" required>
+                </div>
+                <div class="field">
+                  <label for="pays">Pays</label>
+                  <select id="pays" name="pays" required>
+                    <option value="">Sélectionner</option>
+                    <option>Sénégal</option>
+                    <option>Mali</option>
+                    <option>Côte d'Ivoire</option>
+                    <option>Autre</option>
+                  </select>
+                </div>
+                <div class="field field--full">
+                  <label for="partenariat">Type de partenariat recherché</label>
+                  <select id="partenariat" name="partenariat" required>
+                    <option value="">Sélectionner</option>
+                    <option>Investissement immobilier</option>
+                    <option>Investissement automobile</option>
+                    <option>Partenariat stratégique</option>
+                    <option>Co-développement par pays</option>
+                    <option>Demande de dossier d'investissement</option>
+                  </select>
+                </div>
+                <div class="field field--full">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" placeholder="Décrivez votre intérêt, votre horizon d'investissement ou votre besoin."></textarea>
+                </div>
+              </div>
+              <button class="button button--primary" type="submit">Envoyer la demande</button>
+              <p class="form-feedback" data-contact-feedback>
+                Le message sera préparé pour envoi à l'adresse du groupe.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" data-site-footer></footer>
+    <script type="module" src="assets/js/site.js"></script>
+  </body>
+  </html>
