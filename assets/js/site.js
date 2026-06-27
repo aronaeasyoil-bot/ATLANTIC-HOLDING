@@ -31,17 +31,19 @@ function renderHeader() {
   header.innerHTML = `
     <div class="site-nav">
       <a class="brand-mark" href="index.html" aria-label="Atlantic Holding">
-        <span class="brand-mark__eyebrow">${siteShell.brand.eyebrow}</span>
         <span class="brand-mark__name">${siteShell.brand.name}</span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu">
         <span>Menu</span>
       </button>
       <nav class="nav-links" id="site-menu" aria-label="Navigation principale">
-        ${navLinks}
-        <a class="button button--light nav-cta" href="${siteShell.primaryCta.href}">
-          ${siteShell.primaryCta.label}
-        </a>
+        <div class="nav-links__panel">
+          <p class="nav-links__eyebrow">Navigation</p>
+          ${navLinks}
+          <a class="button button--light nav-cta" href="${siteShell.primaryCta.href}">
+            ${siteShell.primaryCta.label}
+          </a>
+        </div>
       </nav>
     </div>
   `;
@@ -95,9 +97,14 @@ function renderStats() {
       .map(
         (item) => `
           <article class="stat-card reveal">
-            <span class="stat-value">${item.value}</span>
-            <h3 class="stat-label">${item.label}</h3>
-            <p class="stat-note">${item.note}</p>
+            <div class="card-media">
+              <img src="${item.image}" alt="${item.label}" loading="lazy">
+            </div>
+            <div class="stat-card__body">
+              <span class="stat-value">${item.value}</span>
+              <h3 class="stat-label">${item.label}</h3>
+              <p class="stat-note">${item.note}</p>
+            </div>
           </article>
         `
       )
@@ -131,6 +138,9 @@ function renderBrandGrid() {
       .map(
         (item) => `
           <article class="brand-card reveal">
+            <div class="card-media card-media--short">
+              <img src="${item.image}" alt="${item.name}" loading="lazy">
+            </div>
             <div class="brand-card__logo">
               <img src="${item.logo}" alt="${item.name}" loading="lazy">
             </div>
@@ -152,27 +162,32 @@ function renderCountryGrid() {
       .map(
         (country) => `
           <article class="country-card reveal" style="--country-accent:${country.accent}">
-            <div class="country-card__top">
-              <span class="country-badge">${country.code}</span>
-              <div>
-                <p class="eyebrow eyebrow--soft">${country.label}</p>
-                <h3>${country.name}</h3>
+            <div class="country-card__media">
+              <img src="${country.image}" alt="${country.name}" loading="lazy">
+              <div class="country-card__overlay">
+                <span class="country-badge">${country.code}</span>
+                <div>
+                  <p class="eyebrow eyebrow--soft">${country.label}</p>
+                  <h3>${country.name}</h3>
+                </div>
               </div>
             </div>
-            <p class="country-card__summary">${country.summary}</p>
-            <ul class="entity-list">
-              ${country.entities
-                .map(
-                  (entity) => `
-                    <li>
-                      <strong>${entity.name}</strong>
-                      <span>${entity.detail}</span>
-                    </li>
-                  `
-                )
-                .join("")}
-            </ul>
-            <p class="country-card__opportunity">${country.opportunity}</p>
+            <div class="country-card__body">
+              <p class="country-card__summary">${country.summary}</p>
+              <ul class="entity-list">
+                ${country.entities
+                  .map(
+                    (entity) => `
+                      <li>
+                        <strong>${entity.name}</strong>
+                        <span>${entity.detail}</span>
+                      </li>
+                    `
+                  )
+                  .join("")}
+              </ul>
+              <p class="country-card__opportunity">${country.opportunity}</p>
+            </div>
           </article>
         `
       )
@@ -235,8 +250,13 @@ function renderMissionPillars() {
       .map(
         (item) => `
           <article class="pillar-card reveal">
-            <h3>${item.title}</h3>
-            <p>${item.copy}</p>
+            <div class="card-media card-media--short">
+              <img src="${item.image}" alt="${item.title}" loading="lazy">
+            </div>
+            <div class="pillar-card__body">
+              <h3>${item.title}</h3>
+              <p>${item.copy}</p>
+            </div>
           </article>
         `
       )
@@ -282,8 +302,13 @@ function renderInvestorPillars() {
       .map(
         (item) => `
           <article class="investor-card reveal">
-            <h3>${item.title}</h3>
-            <p>${item.copy}</p>
+            <div class="card-media card-media--short">
+              <img src="${item.image}" alt="${item.title}" loading="lazy">
+            </div>
+            <div class="investor-card__body">
+              <h3>${item.title}</h3>
+              <p>${item.copy}</p>
+            </div>
           </article>
         `
       )
@@ -297,8 +322,13 @@ function renderInvestmentFormats() {
       .map(
         (item) => `
           <article class="pillar-card reveal">
-            <h3>${item.title}</h3>
-            <p>${item.copy}</p>
+            <div class="card-media card-media--short">
+              <img src="${item.image}" alt="${item.title}" loading="lazy">
+            </div>
+            <div class="pillar-card__body">
+              <h3>${item.title}</h3>
+              <p>${item.copy}</p>
+            </div>
           </article>
         `
       )
@@ -312,12 +342,17 @@ function renderResources() {
       .map(
         (item) => `
           <article class="resource-card reveal">
-            <p class="eyebrow eyebrow--soft">Documentation</p>
-            <h3>${item.title}</h3>
-            <p>${item.copy}</p>
-            <a class="button button--ghost" href="${item.href}" target="_blank" rel="noopener noreferrer">
-              ${item.cta}
-            </a>
+            <div class="card-media card-media--short">
+              <img src="${item.image}" alt="${item.title}" loading="lazy">
+            </div>
+            <div class="resource-card__body">
+              <p class="eyebrow eyebrow--soft">Documentation</p>
+              <h3>${item.title}</h3>
+              <p>${item.copy}</p>
+              <a class="button button--ghost" href="${item.href}" target="_blank" rel="noopener noreferrer">
+                ${item.cta}
+              </a>
+            </div>
           </article>
         `
       )
@@ -352,6 +387,26 @@ function renderCeoSignature() {
   });
 }
 
+function renderWhatsappButton() {
+  if (document.querySelector("[data-whatsapp-float]")) return;
+
+  const button = document.createElement("a");
+  button.className = "whatsapp-float";
+  button.href = "https://wa.me/22391190615";
+  button.target = "_blank";
+  button.rel = "noopener noreferrer";
+  button.dataset.whatsappFloat = "true";
+  button.setAttribute("aria-label", "Contacter ATLANTIC HOLDING sur WhatsApp");
+  button.innerHTML = `
+    <span class="whatsapp-float__icon">WA</span>
+    <span class="whatsapp-float__copy">
+      <strong>WhatsApp</strong>
+      <span>+223 91 19 06 15</span>
+    </span>
+  `;
+  document.body.append(button);
+}
+
 function updateYear() {
   document.querySelectorAll("[data-current-year]").forEach((node) => {
     node.textContent = new Date().getFullYear();
@@ -362,22 +417,47 @@ function setupHeaderBehavior() {
   const header = document.querySelector("[data-site-header]");
   const toggle = header?.querySelector(".nav-toggle");
   const menu = header?.querySelector(".nav-links");
+  const toggleLabel = toggle?.querySelector("span");
 
   const updateHeader = () => {
     if (!header) return;
-    header.classList.toggle("is-scrolled", window.scrollY > 18);
+    header.classList.toggle("is-scrolled", window.scrollY > 18 || menu?.classList.contains("is-open"));
+  };
+
+  const setMenuState = (isOpen) => {
+    if (!menu || !toggle) return;
+
+    menu.classList.toggle("is-open", isOpen);
+    header?.classList.toggle("is-menu-open", isOpen);
+    toggle.setAttribute("aria-expanded", String(isOpen));
+
+    if (toggleLabel) {
+      toggleLabel.textContent = isOpen ? "Fermer" : "Menu";
+    }
+
+    updateHeader();
   };
 
   toggle?.addEventListener("click", () => {
-    const isOpen = menu?.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+    setMenuState(!menu?.classList.contains("is-open"));
   });
 
   menu?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      menu.classList.remove("is-open");
-      toggle?.setAttribute("aria-expanded", "false");
+      setMenuState(false);
     });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!menu?.classList.contains("is-open")) return;
+    if (header?.contains(event.target)) return;
+    setMenuState(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMenuState(false);
+    }
   });
 
   updateHeader();
@@ -503,6 +583,7 @@ function init() {
   renderResources();
   renderContactCards();
   renderCeoSignature();
+  renderWhatsappButton();
   updateYear();
   setupHeaderBehavior();
   setupHeroSlider();

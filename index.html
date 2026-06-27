@@ -34,25 +34,26 @@
             >
               <source src="assets/videos/atlantic-hero.mp4" type="video/mp4">
             </video>
-          </div>
-
-          <div class="hero-video__panel surface-panel reveal">
-            <span class="hero-kicker hero-kicker--dark">ATLANTIC HOLDING</span>
-            <h1 class="hero-title hero-title--dark">Investir dans l'avenir de la mobilité et de l'immobilier en Afrique de l'Ouest</h1>
-            <p class="hero-subtitle hero-subtitle--dark">
-              Une plateforme régionale ambitieuse entre Sénégal, Mali et Côte d'Ivoire, conçue pour
-              accueillir des partenaires financiers exigeants autour d'actifs visibles, premium et
-              immédiatement exploitables.
-            </p>
-            <div class="hero-actions hero-actions--left">
-              <a class="button button--primary" href="projets.html">Découvrir les projets</a>
-              <a class="button button--light" href="investisseurs.html#dossier">Devenir partenaire financier</a>
+            <div class="hero-video__overlay">
+              <div class="hero-video__content">
+                <h1 class="hero-title">Les grands Projets</h1>
+                <p class="hero-subtitle">100% de Rentabilité</p>
+                <div class="hero-video__rule"></div>
+                <div class="hero-actions hero-actions--hero">
+                  <a class="button button--primary" href="projets.html">Découvrir les projets</a>
+                  <a class="button button--light" href="investisseurs.html#dossier">Devenir partenaire financier</a>
+                </div>
+              </div>
+              <div class="hero-video__dots" aria-hidden="true">
+                <span class="hero-video__dot"></span>
+                <span class="hero-video__dot hero-video__dot--active"></span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section section--tight">
+      <section class="section section--tight stat-showcase">
         <div class="section-shell">
           <div class="stat-grid" data-stat-grid></div>
         </div>
@@ -133,7 +134,11 @@
       </section>
 
       <section class="section">
-        <div class="section-shell">
+        <div class="section-shell split-layout">
+          <div
+            class="image-frame reveal"
+            style="background-image: url('assets/images/mixed-tower.jpg')"
+          ></div>
           <div class="surface-panel surface-panel--dark quote-card reveal">
             <p class="eyebrow">Vision du CEO</p>
             <blockquote class="quote-card__quote" data-ceo-quote></blockquote>

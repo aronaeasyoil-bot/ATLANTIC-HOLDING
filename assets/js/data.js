@@ -21,10 +21,30 @@ export const siteShell = {
 };
 
 export const stats = [
-  { value: "3", label: "marchés stratégiques", note: "Sénégal, Mali, Côte d'Ivoire" },
-  { value: "2", label: "pôles structurants", note: "Immobilier et automobile" },
-  { value: "4", label: "marques opérationnelles", note: "Goumalo, Atlantic Group, GGB, Africar" },
-  { value: "1", label: "vision de groupe", note: "Exécution locale et partenaires internationaux" }
+  {
+    value: "3",
+    label: "marchés stratégiques",
+    note: "Sénégal, Mali, Côte d'Ivoire",
+    image: "assets/images/goumalo-residence-tower.jpg"
+  },
+  {
+    value: "2",
+    label: "pôles structurants",
+    note: "Immobilier et automobile",
+    image: "assets/images/goumalo-pool.jpg"
+  },
+  {
+    value: "4",
+    label: "marques opérationnelles",
+    note: "Goumalo, Atlantic Group, GGB, Africar",
+    image: "assets/images/atlantic-automobile-showroom.jpg"
+  },
+  {
+    value: "1",
+    label: "vision de groupe",
+    note: "Exécution locale et partenaires internationaux",
+    image: "assets/images/restaurant-twilight.jpg"
+  }
 ];
 
 export const sectorCards = [
@@ -52,28 +72,32 @@ export const companyCards = [
     role: "Pôle immobilier",
     description:
       "Promotion immobilière, programmes résidentiels, actifs mixtes et opportunités d'investissement dans des emplacements stratégiques.",
-    logo: "assets/images/goumalo-logo.jpg"
+    logo: "assets/images/goumalo-logo.jpg",
+    image: "assets/images/goumalo-waterfront.jpg"
   },
   {
     name: "Atlantic Group",
     role: "Plateforme automobile régionale",
     description:
       "Distribution automobile, import-export, showrooms et restauration intégrée au service d'une clientèle exigeante.",
-    logo: "assets/images/atlantic-senegal-logo.jpg"
+    logo: "assets/images/atlantic-senegal-logo.jpg",
+    image: "assets/images/atlantic-automobile-showroom.jpg"
   },
   {
     name: "GGB",
     role: "Opérateur automobile Sénégal",
     description:
       "Concessionnaire complémentaire au Sénégal, centré sur la vente multimarque, la proximité commerciale et la croissance locale.",
-    logo: "assets/images/ggb-logo.jpg"
+    logo: "assets/images/ggb-logo.jpg",
+    image: "assets/images/restaurant-front.jpg"
   },
   {
     name: "Africar",
     role: "Service après-vente",
     description:
       "Maintenance, réparation, pièces détachées et suivi client pour renforcer la durabilité des opérations automobiles.",
-    logo: "assets/images/africar-logo.jpg"
+    logo: "assets/images/africar-logo.jpg",
+    image: "assets/images/restaurant-exterior-wide.jpg"
   }
 ];
 
@@ -192,22 +216,26 @@ export const missionPillars = [
   {
     title: "Vision de long terme",
     copy:
-      "Concevoir des plateformes durables, adossées à des besoins réels, avec une lecture régionale des opportunités et des cycles d'investissement."
+      "Concevoir des plateformes durables, adossées à des besoins réels, avec une lecture régionale des opportunités et des cycles d'investissement.",
+    image: "assets/images/mixed-tower.jpg"
   },
   {
     title: "Exécution locale",
     copy:
-      "Opérer avec une compréhension fine des marchés du Sénégal, du Mali et de la Côte d'Ivoire pour accélérer la mise en œuvre et la fiabilité des projets."
+      "Opérer avec une compréhension fine des marchés du Sénégal, du Mali et de la Côte d'Ivoire pour accélérer la mise en œuvre et la fiabilité des projets.",
+    image: "assets/images/atlantic-automobile-showroom.jpg"
   },
   {
     title: "Discipline institutionnelle",
     copy:
-      "Structurer les projets pour rassurer les investisseurs, faciliter les partenariats financiers et construire une gouvernance lisible."
+      "Structurer les projets pour rassurer les investisseurs, faciliter les partenariats financiers et construire une gouvernance lisible.",
+    image: "assets/images/goumalo-bedroom.jpg"
   },
   {
     title: "Synergies sectorielles",
     copy:
-      "Relier immobilier, automobile, services et restauration afin de renforcer la solidité commerciale et la valeur des actifs."
+      "Relier immobilier, automobile, services et restauration afin de renforcer la solidité commerciale et la valeur des actifs.",
+    image: "assets/images/restaurant-twilight.jpg"
   }
 ];
 
@@ -245,7 +273,7 @@ export const projectFamilies = {
     title: "GGB Sénégal",
     intro:
       "GGB renforce le dispositif automobile du groupe au Sénégal avec une offre multimarque, des services de proximité et des perspectives de développement commercial ciblées.",
-    image: "assets/images/ggb-logo.jpg",
+    image: "assets/images/atlantic-automobile-showroom.jpg",
     features: [
       "Vente de véhicules neufs et d'occasion",
       "Services automobiles et accompagnement client",
@@ -258,7 +286,7 @@ export const projectFamilies = {
     title: "Africar",
     intro:
       "Africar est la colonne vertébrale après-vente du projet automobile dans chaque pays, avec une promesse de qualité, de continuité de service et de confiance client.",
-    image: "assets/images/africar-logo.jpg",
+    image: "assets/images/restaurant-exterior-wide.jpg",
     features: [
       "Maintenance préventive et corrective",
       "Réparation et diagnostic technique",
@@ -272,22 +300,26 @@ export const investorPillars = [
   {
     title: "Présences complémentaires dans 3 pays",
     copy:
-      "Le groupe construit une trajectoire régionale entre Sénégal, Mali et Côte d'Ivoire, avec la possibilité de calibrer l'investissement par marché."
+      "Le groupe construit une trajectoire régionale entre Sénégal, Mali et Côte d'Ivoire, avec la possibilité de calibrer l'investissement par marché.",
+    image: "assets/images/goumalo-residence-tower.jpg"
   },
   {
     title: "Secteurs porteurs et interconnectés",
     copy:
-      "Immobilier, automobile, services et restauration s'articulent autour d'une même logique de flux, d'usage et de valeur."
+      "Immobilier, automobile, services et restauration s'articulent autour d'une même logique de flux, d'usage et de valeur.",
+    image: "assets/images/restaurant-twilight.jpg"
   },
   {
     title: "Partenariats adaptables",
     copy:
-      "Ouverture à des partenariats stratégiques, financiers ou opérationnels, selon le pays, le projet et le niveau d'implication recherché."
+      "Ouverture à des partenariats stratégiques, financiers ou opérationnels, selon le pays, le projet et le niveau d'implication recherché.",
+    image: "assets/images/goumalo-living.jpg"
   },
   {
     title: "Narratif institutionnel crédible",
     copy:
-      "Le positionnement premium et la structuration multi-activités permettent de dialoguer avec des banques, family offices et partenaires internationaux."
+      "Le positionnement premium et la structuration multi-activités permettent de dialoguer avec des banques, family offices et partenaires internationaux.",
+    image: "assets/images/atlantic-automobile-showroom.jpg"
   }
 ];
 
@@ -295,17 +327,20 @@ export const investmentFormats = [
   {
     title: "Investissement par pays",
     copy:
-      "Entrer sur un marché prioritaire selon la thèse d'investissement et la maturité du pipeline local."
+      "Entrer sur un marché prioritaire selon la thèse d'investissement et la maturité du pipeline local.",
+    image: "assets/images/mixed-tower.jpg"
   },
   {
     title: "Investissement par secteur",
     copy:
-      "Cibler exclusivement l'immobilier, l'automobile, les services ou la restauration en fonction du mandat du partenaire."
+      "Cibler exclusivement l'immobilier, l'automobile, les services ou la restauration en fonction du mandat du partenaire.",
+    image: "assets/images/atlantic-automobile-showroom.jpg"
   },
   {
     title: "Partenariat stratégique",
     copy:
-      "Associer capital, réseau, savoir-faire ou capacité de financement autour d'une plateforme de croissance régionale."
+      "Associer capital, réseau, savoir-faire ou capacité de financement autour d'une plateforme de croissance régionale.",
+    image: "assets/images/goumalo-waterfront.jpg"
   }
 ];
 
@@ -313,6 +348,7 @@ export const resources = [
   {
     title: "Plaquette Goumalo",
     copy: "Document de présentation immobilière pour une première lecture du projet.",
+    image: "assets/images/goumalo-waterfront.jpg",
     href: "assets/docs/goumalo-brochure.pdf",
     cta: "Ouvrir la plaquette"
   },
@@ -320,6 +356,7 @@ export const resources = [
     title: "Rapport Tour Mixte Badalabougou",
     copy:
       "Support descriptif d'un projet mixte illustrant la capacité du groupe à structurer des actifs complexes.",
+    image: "assets/images/mixed-tower.jpg",
     href: "assets/docs/tour-mixte-badalabougou.pdf",
     cta: "Consulter le rapport"
   }
