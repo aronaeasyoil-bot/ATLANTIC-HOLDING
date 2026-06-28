@@ -96,14 +96,15 @@ function renderStats() {
     container.innerHTML = stats
       .map(
         (item) => `
-          <article class="stat-card reveal">
-            <div class="card-media">
+          <article class="info-card stat-card reveal">
+            <div class="info-card__media card-media">
               <img src="${item.image}" alt="${item.label}" loading="lazy">
             </div>
-            <div class="stat-card__body">
+            <div class="info-card__body stat-card__body">
+              <p class="info-card__eyebrow">Indicateur</p>
               <span class="stat-value">${item.value}</span>
-              <h3 class="stat-label">${item.label}</h3>
-              <p class="stat-note">${item.note}</p>
+              <h3 class="info-card__title stat-label">${item.label}</h3>
+              <p class="info-card__copy stat-note">${item.note}</p>
             </div>
           </article>
         `
@@ -117,13 +118,15 @@ function renderSectorCards() {
     container.innerHTML = sectorCards
       .map(
         (item) => `
-          <article class="sector-card reveal">
-            <div class="sector-card__image" style="background-image: linear-gradient(180deg, rgba(7, 18, 36, 0.1), rgba(7, 18, 36, 0.85)), url('${item.image}')"></div>
-            <div class="sector-card__body">
-              <p class="eyebrow eyebrow--soft">${item.eyebrow}</p>
-              <h3>${item.title}</h3>
-              <p>${item.copy}</p>
-              <a class="button button--ghost" href="${item.href}">Explorer le pôle</a>
+          <article class="info-card sector-card reveal">
+            <div class="info-card__media sector-card__image">
+              <img src="${item.image}" alt="${item.title}" loading="lazy">
+            </div>
+            <div class="info-card__body sector-card__body">
+              <p class="info-card__eyebrow">${item.eyebrow}</p>
+              <h3 class="info-card__title">${item.title}</h3>
+              <p class="info-card__copy">${item.copy}</p>
+              <a class="info-card__link" href="${item.href}">Explorer le pôle</a>
             </div>
           </article>
         `
@@ -137,17 +140,17 @@ function renderBrandGrid() {
     container.innerHTML = companyCards
       .map(
         (item) => `
-          <article class="brand-card reveal">
-            <div class="card-media card-media--short">
+          <article class="info-card brand-card reveal">
+            <div class="info-card__media card-media card-media--short">
               <img src="${item.image}" alt="${item.name}" loading="lazy">
             </div>
-            <div class="brand-card__logo">
-              <img src="${item.logo}" alt="${item.name}" loading="lazy">
-            </div>
-            <div class="brand-card__body">
-              <p class="eyebrow eyebrow--soft">${item.role}</p>
-              <h3>${item.name}</h3>
-              <p>${item.description}</p>
+            <div class="info-card__body brand-card__body">
+              <div class="brand-card__logo">
+                <img src="${item.logo}" alt="${item.name}" loading="lazy">
+              </div>
+              <p class="info-card__eyebrow">${item.role}</p>
+              <h3 class="info-card__title">${item.name}</h3>
+              <p class="info-card__copy">${item.description}</p>
             </div>
           </article>
         `
@@ -161,19 +164,19 @@ function renderCountryGrid() {
     container.innerHTML = countries
       .map(
         (country) => `
-          <article class="country-card reveal" style="--country-accent:${country.accent}">
-            <div class="country-card__media">
+          <article class="info-card country-card reveal" style="--country-accent:${country.accent}">
+            <div class="info-card__media country-card__media">
               <img src="${country.image}" alt="${country.name}" loading="lazy">
-              <div class="country-card__overlay">
+            </div>
+            <div class="info-card__body country-card__body">
+              <div class="country-card__head">
                 <span class="country-badge">${country.code}</span>
                 <div>
-                  <p class="eyebrow eyebrow--soft">${country.label}</p>
-                  <h3>${country.name}</h3>
+                  <p class="info-card__eyebrow">${country.label}</p>
+                  <h3 class="info-card__title">${country.name}</h3>
                 </div>
               </div>
-            </div>
-            <div class="country-card__body">
-              <p class="country-card__summary">${country.summary}</p>
+              <p class="info-card__copy country-card__summary">${country.summary}</p>
               <ul class="entity-list">
                 ${country.entities
                   .map(
@@ -186,7 +189,7 @@ function renderCountryGrid() {
                   )
                   .join("")}
               </ul>
-              <p class="country-card__opportunity">${country.opportunity}</p>
+              <p class="info-card__copy country-card__opportunity">${country.opportunity}</p>
             </div>
           </article>
         `
@@ -199,19 +202,20 @@ function renderCountrySections() {
   document.querySelectorAll("[data-country-sections]").forEach((container) => {
     container.innerHTML = countries
       .map(
-        (country, index) => `
-          <article class="country-detail reveal ${index % 2 === 1 ? "country-detail--reverse" : ""}" id="${country.slug}">
-            <div class="country-detail__media" style="background-image: linear-gradient(180deg, rgba(5, 14, 30, 0.18), rgba(5, 14, 30, 0.82)), url('${country.image}')">
-              <div class="country-detail__overlay">
-                <span class="country-badge">${country.code}</span>
-                <h3>${country.name}</h3>
-                <p>${country.label}</p>
-              </div>
+        (country) => `
+          <article class="info-card country-detail reveal" id="${country.slug}" style="--country-accent:${country.accent}">
+            <div class="info-card__media country-detail__media">
+              <img src="${country.image}" alt="${country.name}" loading="lazy">
             </div>
-            <div class="country-detail__content">
-              <p class="eyebrow">${country.label}</p>
-              <h3>${country.name}</h3>
-              <p>${country.summary}</p>
+            <div class="info-card__body country-detail__content">
+              <div class="country-card__head">
+                <span class="country-badge">${country.code}</span>
+                <div>
+                  <p class="info-card__eyebrow">${country.label}</p>
+                  <h3 class="info-card__title">${country.name}</h3>
+                </div>
+              </div>
+              <p class="info-card__copy">${country.summary}</p>
               <ul class="entity-list entity-list--detail">
                 ${country.entities
                   .map(
@@ -235,7 +239,7 @@ function renderCountrySections() {
                   )
                   .join("")}
               </div>
-              <p class="country-card__opportunity">${country.opportunity}</p>
+              <p class="info-card__copy country-card__opportunity">${country.opportunity}</p>
             </div>
           </article>
         `
@@ -249,13 +253,14 @@ function renderMissionPillars() {
     container.innerHTML = missionPillars
       .map(
         (item) => `
-          <article class="pillar-card reveal">
-            <div class="card-media card-media--short">
+          <article class="info-card pillar-card reveal">
+            <div class="info-card__media card-media card-media--short">
               <img src="${item.image}" alt="${item.title}" loading="lazy">
             </div>
-            <div class="pillar-card__body">
-              <h3>${item.title}</h3>
-              <p>${item.copy}</p>
+            <div class="info-card__body pillar-card__body">
+              <p class="info-card__eyebrow">Fondation</p>
+              <h3 class="info-card__title">${item.title}</h3>
+              <p class="info-card__copy">${item.copy}</p>
             </div>
           </article>
         `
@@ -277,14 +282,14 @@ function renderProjectGrids() {
         if (!project) return "";
 
         return `
-          <article class="project-card reveal" id="${key}">
-            <div class="project-card__media">
+          <article class="info-card project-card reveal" id="${key}">
+            <div class="info-card__media project-card__media">
               <img src="${project.image}" alt="${project.title}" loading="lazy">
             </div>
-            <div class="project-card__body">
-              <p class="eyebrow">${project.eyebrow}</p>
-              <h3>${project.title}</h3>
-              <p>${project.intro}</p>
+            <div class="info-card__body project-card__body">
+              <p class="info-card__eyebrow">${project.eyebrow}</p>
+              <h3 class="info-card__title">${project.title}</h3>
+              <p class="info-card__copy">${project.intro}</p>
               <ul class="feature-list">
                 ${project.features.map((feature) => `<li>${feature}</li>`).join("")}
               </ul>
@@ -301,13 +306,14 @@ function renderInvestorPillars() {
     container.innerHTML = investorPillars
       .map(
         (item) => `
-          <article class="investor-card reveal">
-            <div class="card-media card-media--short">
+          <article class="info-card investor-card reveal">
+            <div class="info-card__media card-media card-media--short">
               <img src="${item.image}" alt="${item.title}" loading="lazy">
             </div>
-            <div class="investor-card__body">
-              <h3>${item.title}</h3>
-              <p>${item.copy}</p>
+            <div class="info-card__body investor-card__body">
+              <p class="info-card__eyebrow">Partnerships</p>
+              <h3 class="info-card__title">${item.title}</h3>
+              <p class="info-card__copy">${item.copy}</p>
             </div>
           </article>
         `
@@ -321,13 +327,14 @@ function renderInvestmentFormats() {
     container.innerHTML = investmentFormats
       .map(
         (item) => `
-          <article class="pillar-card reveal">
-            <div class="card-media card-media--short">
+          <article class="info-card pillar-card reveal">
+            <div class="info-card__media card-media card-media--short">
               <img src="${item.image}" alt="${item.title}" loading="lazy">
             </div>
-            <div class="pillar-card__body">
-              <h3>${item.title}</h3>
-              <p>${item.copy}</p>
+            <div class="info-card__body pillar-card__body">
+              <p class="info-card__eyebrow">Format</p>
+              <h3 class="info-card__title">${item.title}</h3>
+              <p class="info-card__copy">${item.copy}</p>
             </div>
           </article>
         `
@@ -341,17 +348,15 @@ function renderResources() {
     container.innerHTML = resources
       .map(
         (item) => `
-          <article class="resource-card reveal">
-            <div class="card-media card-media--short">
+          <article class="info-card resource-card reveal">
+            <div class="info-card__media card-media card-media--short">
               <img src="${item.image}" alt="${item.title}" loading="lazy">
             </div>
-            <div class="resource-card__body">
-              <p class="eyebrow eyebrow--soft">Documentation</p>
-              <h3>${item.title}</h3>
-              <p>${item.copy}</p>
-              <a class="button button--ghost" href="${item.href}" target="_blank" rel="noopener noreferrer">
-                ${item.cta}
-              </a>
+            <div class="info-card__body resource-card__body">
+              <p class="info-card__eyebrow">Documentation</p>
+              <h3 class="info-card__title">${item.title}</h3>
+              <p class="info-card__copy">${item.copy}</p>
+              <a class="info-card__link" href="${item.href}" target="_blank" rel="noopener noreferrer">${item.cta}</a>
             </div>
           </article>
         `
@@ -398,11 +403,10 @@ function renderWhatsappButton() {
   button.dataset.whatsappFloat = "true";
   button.setAttribute("aria-label", "Contacter ATLANTIC HOLDING sur WhatsApp");
   button.innerHTML = `
-    <span class="whatsapp-float__icon">WA</span>
-    <span class="whatsapp-float__copy">
-      <strong>WhatsApp</strong>
-      <span>+223 91 19 06 15</span>
-    </span>
+    <svg class="whatsapp-float__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M19.11 17.42c-.27-.13-1.57-.77-1.81-.86-.24-.09-.41-.13-.59.14-.18.27-.68.86-.84 1.04-.15.18-.31.2-.58.07-.27-.13-1.14-.42-2.18-1.33-.8-.71-1.34-1.58-1.49-1.84-.15-.27-.02-.41.11-.54.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.59-1.42-.81-1.94-.21-.51-.43-.44-.59-.45h-.5c-.18 0-.47.07-.71.34-.24.27-.93.91-.93 2.22s.95 2.57 1.08 2.75c.13.18 1.86 2.84 4.5 3.98.63.27 1.13.43 1.52.55.64.2 1.22.17 1.68.1.51-.08 1.57-.64 1.79-1.26.22-.62.22-1.15.15-1.26-.06-.11-.24-.18-.51-.31z"/>
+      <path fill="currentColor" d="M16.02 4.52c-6.35 0-11.5 5.13-11.5 11.46 0 2.02.53 3.99 1.53 5.72L4.46 27.5l5.96-1.56a11.53 11.53 0 0 0 5.6 1.44h.01c6.34 0 11.49-5.13 11.49-11.47 0-3.07-1.2-5.95-3.37-8.12a11.42 11.42 0 0 0-8.13-3.27zm0 20.92h-.01a9.57 9.57 0 0 1-4.87-1.33l-.35-.21-3.54.93.95-3.45-.23-.36a9.45 9.45 0 0 1-1.47-5.04c0-5.24 4.27-9.5 9.53-9.5 2.54 0 4.92.98 6.72 2.77a9.4 9.4 0 0 1 2.79 6.73c0 5.24-4.28 9.46-9.52 9.46z"/>
+    </svg>
   `;
   document.body.append(button);
 }
