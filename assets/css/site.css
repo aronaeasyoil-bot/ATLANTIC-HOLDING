@@ -1841,8 +1841,8 @@ main {
 .info-card.sector-card .sector-card__image {
   position: relative;
   inset: auto;
-  height: 300px;
-  min-height: 300px;
+  height: 276px;
+  min-height: 276px;
 }
 
 .info-card.sector-card .sector-card__image img {
@@ -1852,26 +1852,42 @@ main {
   object-position: center;
 }
 
+.info-card.sector-card .sector-card__content {
+  display: grid;
+  gap: 18px;
+}
+
 .info-card.sector-card .sector-card__body {
-  justify-content: flex-start;
-  gap: 16px;
-  padding: 28px 20px 30px;
+  justify-content: space-between;
+  gap: 26px;
+  min-height: 344px;
+  padding: 28px 20px 26px;
+}
+
+.info-card.sector-card .info-card__eyebrow {
+  font-size: 0.84rem;
+  letter-spacing: 0.28em;
 }
 
 .info-card.sector-card .info-card__title {
-  font-size: clamp(2.25rem, 3.8vw, 3.4rem);
-  line-height: 1.02;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(2.5rem, 4vw, 3.7rem);
+  font-weight: 800;
+  line-height: 0.94;
   letter-spacing: -0.05em;
 }
 
 .info-card.sector-card .info-card__copy {
-  max-width: 30ch;
-  font-size: 1.02rem;
-  line-height: 1.78;
+  max-width: 28ch;
+  font-size: 1.06rem;
+  line-height: 1.74;
+  color: rgba(233, 237, 246, 0.8);
 }
 
-.info-card.sector-card .info-card__link {
-  margin-top: 4px;
+.info-card.sector-card .sector-card__cta {
+  margin-top: 0;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
 }
 
 .info-card.project-card,
@@ -1966,6 +1982,10 @@ main {
 
   .info-card.sector-card .info-card__copy {
     max-width: none;
+  }
+
+  .info-card.sector-card .sector-card__body {
+    min-height: auto;
   }
 
   .info-card__actions {

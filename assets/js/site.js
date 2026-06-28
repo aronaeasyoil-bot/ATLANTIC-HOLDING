@@ -278,10 +278,12 @@ function renderSectorCards() {
               <img src="${item.image}" alt="${item.title}" loading="lazy">
             </div>
             <div class="info-card__body sector-card__body">
-              <p class="info-card__eyebrow">${item.eyebrow}</p>
-              <h3 class="info-card__title">${item.title}</h3>
-              <p class="info-card__copy">${item.copy}</p>
-              <a class="info-card__link" href="${item.href}">Explorer le pole</a>
+              <div class="sector-card__content">
+                <p class="info-card__eyebrow">${item.eyebrow}</p>
+                <h3 class="info-card__title">${item.title}</h3>
+                <p class="info-card__copy">${item.copy}</p>
+              </div>
+              <a class="info-card__link sector-card__cta" href="${item.href}">Explorer le pole</a>
             </div>
           </article>
         `
