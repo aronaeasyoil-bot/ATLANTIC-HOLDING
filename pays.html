@@ -6,7 +6,7 @@
     <title>ATLANTIC HOLDING | Pays</title>
     <meta
       name="description"
-      content="ATLANTIC HOLDING déploie ses projets au Sénégal, au Mali et en Côte d'Ivoire."
+      content="ATLANTIC HOLDING deploie ses projets au Senegal, au Mali et en Cote d'Ivoire."
     >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,13 +23,13 @@
       <section
         class="page-hero"
         style="background-image: url('assets/images/goumalo-waterfront.jpg')"
+        data-content-bg="pages.countries.hero.backgroundImage"
       >
         <div class="page-hero__shell">
-          <p class="eyebrow">Pays</p>
-          <h1 class="page-hero__title">Sénégal, Mali, Côte d'Ivoire</h1>
-          <p class="page-hero__copy">
-            Trois marchés stratégiques pour construire des actifs de confiance, des plateformes
-            automobiles crédibles et des services de proximité à forte valeur ajoutée.
+          <p class="eyebrow" data-content-text="pages.countries.hero.eyebrow">Pays</p>
+          <h1 class="page-hero__title" data-content-text="pages.countries.hero.title">Senegal, Mali, Cote d'Ivoire</h1>
+          <p class="page-hero__copy" data-content-text="pages.countries.hero.copy">
+            Trois marches strategiques pour construire des actifs de confiance.
           </p>
         </div>
       </section>
@@ -38,12 +38,11 @@
         <div class="section-shell">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Vue d'ensemble</p>
-              <h2 class="section-title">Une lecture pays par pays de la plateforme ATLANTIC HOLDING</h2>
+              <p class="eyebrow" data-content-text="pages.countries.overviewIntro.eyebrow">Vue d'ensemble</p>
+              <h2 class="section-title" data-content-text="pages.countries.overviewIntro.title">Une lecture pays par pays de la plateforme ATLANTIC HOLDING</h2>
             </div>
-            <p class="section-copy">
-              Chaque marché concentre une combinaison spécifique de projets immobiliers, automobiles et de
-              services, avec une capacité d'investissement modulable selon les priorités du partenaire.
+            <p class="section-copy" data-content-text="pages.countries.overviewIntro.copy">
+              Chaque marche concentre une combinaison specifique de projets immobiliers, automobiles et de services.
             </p>
           </div>
           <div class="country-grid" data-country-grid></div>
@@ -54,12 +53,11 @@
         <div class="section-shell">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Déploiement détaillé</p>
-              <h2 class="section-title">Des projets adaptés au profil de chaque marché</h2>
+              <p class="eyebrow" data-content-text="pages.countries.detailIntro.eyebrow">Deploiement detaille</p>
+              <h2 class="section-title" data-content-text="pages.countries.detailIntro.title">Des projets adaptes au profil de chaque marche</h2>
             </div>
-            <p class="section-copy">
-              Les sections ci-dessous donnent une vision plus concrète des entreprises mobilisées et des
-              leviers d'expansion identifiés dans chaque pays.
+            <p class="section-copy" data-content-text="pages.countries.detailIntro.copy">
+              Les sections ci-dessous donnent une vision plus concrete des entreprises mobilisees dans chaque pays.
             </p>
           </div>
           <div data-country-sections></div>
@@ -71,13 +69,17 @@
           <div class="cta-banner reveal">
             <div class="cta-banner__grid">
               <div>
-                <h2>Entrer par marché, par projet ou par secteur</h2>
-                <p>
-                  ATLANTIC HOLDING permet d'envisager une approche progressive, ciblée ou régionale selon
-                  le niveau d'ambition et le profil du partenaire financier.
+                <h2 data-content-text="pages.countries.cta.title">Entrer par marche, par projet ou par secteur</h2>
+                <p data-content-text="pages.countries.cta.copy">
+                  ATLANTIC HOLDING permet d'envisager une approche progressive, ciblee ou regionale selon le profil du partenaire financier.
                 </p>
               </div>
-              <a class="button button--light" href="investisseurs.html#dossier">Voir les modalités d'investissement</a>
+              <a
+                class="button button--light"
+                href="investisseurs.html#dossier"
+                data-content-text="pages.countries.cta.button.label"
+                data-content-href="pages.countries.cta.button.href"
+              >Voir les modalites d'investissement</a>
             </div>
           </div>
         </div>
@@ -87,4 +89,4 @@
     <footer class="site-footer" data-site-footer></footer>
     <script type="module" src="assets/js/site.js"></script>
   </body>
-  </html>
+</html>

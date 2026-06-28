@@ -1,0 +1,23 @@
+{
+  "name": "atlantic-group",
+  "version": "1.0.0",
+  "description": "ATLANTIC HOLDING premium investment website with private admin.",
+  "scripts": {
+    "deploy:prod": "vercel deploy --prod --yes"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aronaeasyoil-bot/ATLANTIC-HOLDING.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/aronaeasyoil-bot/ATLANTIC-HOLDING/issues"
+  },
+  "homepage": "https://github.com/aronaeasyoil-bot/ATLANTIC-HOLDING#readme",
+  "dependencies": {
+    "@vercel/blob": "^2.5.0"
+  }
+}

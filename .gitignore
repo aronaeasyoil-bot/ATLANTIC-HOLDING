@@ -28,3 +28,7 @@
 
 .vercel
 .env*
+admin-content*.json
+admin-cookies*.txt
+admin-login.json
+vercel-dev.log

@@ -1,24 +1,78 @@
-import {
-  ceoProfile,
-  companyCards,
-  contactDetails,
-  countries,
-  investmentFormats,
-  investorPillars,
-  missionPillars,
-  projectFamilies,
-  resources,
-  sectorCards,
-  siteShell,
-  stats
-} from "./data.js";
+import { defaultSiteContent } from "./data.js";
+
+const CONTENT_API = "/api/content";
+
+let siteContent = cloneContent(defaultSiteContent);
+
+function cloneContent(value) {
+  return typeof structuredClone === "function"
+    ? structuredClone(value)
+    : JSON.parse(JSON.stringify(value));
+}
+
+function isObject(value) {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function mergeContent(base, override) {
+  if (override === undefined) {
+    return cloneContent(base);
+  }
+
+  if (Array.isArray(override)) {
+    return override.map((item) => cloneContent(item));
+  }
+
+  if (isObject(override)) {
+    const result = isObject(base) ? cloneContent(base) : {};
+    Object.keys(override).forEach((key) => {
+      result[key] = mergeContent(base?.[key], override[key]);
+    });
+    return result;
+  }
+
+  return override;
+}
+
+async function loadSiteContent() {
+  try {
+    const response = await fetch(CONTENT_API, { cache: "no-store" });
+    if (!response.ok) return;
+
+    const remoteContent = await response.json();
+    siteContent = mergeContent(defaultSiteContent, remoteContent);
+  } catch {
+    siteContent = cloneContent(defaultSiteContent);
+  }
+}
+
+function getContentValue(path) {
+  if (!path) return undefined;
+
+  return path.split(".").reduce((current, key) => current?.[key], siteContent);
+}
+
+function formatLabel(key) {
+  return key
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/[-_]/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function escapeAttribute(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
 
 function renderHeader() {
   const header = document.querySelector("[data-site-header]");
   if (!header) return;
 
   const currentPage = document.body.dataset.page || "";
-  const navLinks = siteShell.navigation
+  const navLinks = siteContent.siteShell.navigation
     .map(
       (item) => `
         <a class="nav-link ${item.slug === currentPage ? "is-active" : ""}" href="${item.href}">
@@ -30,8 +84,8 @@ function renderHeader() {
 
   header.innerHTML = `
     <div class="site-nav">
-      <a class="brand-mark" href="index.html" aria-label="Atlantic Holding">
-        <span class="brand-mark__name">${siteShell.brand.name}</span>
+      <a class="brand-mark" href="index.html" aria-label="${escapeAttribute(siteContent.siteShell.brand.name)}">
+        <span class="brand-mark__name">${siteContent.siteShell.brand.name}</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu">
         <span>Menu</span>
@@ -40,8 +94,8 @@ function renderHeader() {
         <div class="nav-links__panel">
           <p class="nav-links__eyebrow">Navigation</p>
           ${navLinks}
-          <a class="button button--light nav-cta" href="${siteShell.primaryCta.href}">
-            ${siteShell.primaryCta.label}
+          <a class="button button--light nav-cta" href="${siteContent.siteShell.primaryCta.href}">
+            ${siteContent.siteShell.primaryCta.label}
           </a>
         </div>
       </nav>
@@ -53,11 +107,11 @@ function renderFooter() {
   const footer = document.querySelector("[data-site-footer]");
   if (!footer) return;
 
-  const navLinks = siteShell.navigation
+  const navLinks = siteContent.siteShell.navigation
     .map((item) => `<a href="${item.href}">${item.label}</a>`)
     .join("");
 
-  const contactLinks = contactDetails
+  const contactLinks = siteContent.contactDetails
     .map(
       (item) => `
         <a href="${item.href}">
@@ -71,9 +125,9 @@ function renderFooter() {
   footer.innerHTML = `
     <div class="section-shell footer-grid">
       <div>
-        <p class="footer-eyebrow">${siteShell.brand.eyebrow}</p>
-        <h2 class="footer-brand">${siteShell.brand.name}</h2>
-        <p class="footer-copy">${siteShell.brand.statement}</p>
+        <p class="footer-eyebrow">${siteContent.siteShell.brand.eyebrow}</p>
+        <h2 class="footer-brand">${siteContent.siteShell.brand.name}</h2>
+        <p class="footer-copy">${siteContent.siteShell.brand.statement}</p>
       </div>
       <div class="footer-links">
         <h3>Navigation</h3>
@@ -85,17 +139,108 @@ function renderFooter() {
       </div>
     </div>
     <div class="section-shell footer-base">
-      <p>© <span data-current-year></span> ATLANTIC HOLDING. Tous droits réservés.</p>
-      <p>Structure de contenu centralisée pour une future version anglaise.</p>
+      <p>&copy; <span data-current-year></span> ATLANTIC HOLDING. Tous droits reserves.</p>
+      <p>Structure de contenu centralisee pour une future version anglaise.</p>
     </div>
   `;
 }
 
+function bindContentFields() {
+  document.querySelectorAll("[data-content-text]").forEach((node) => {
+    const value = getContentValue(node.dataset.contentText);
+    if (value !== undefined) {
+      node.textContent = value;
+    }
+  });
+
+  document.querySelectorAll("[data-content-html]").forEach((node) => {
+    const value = getContentValue(node.dataset.contentHtml);
+    if (value !== undefined) {
+      node.innerHTML = value;
+    }
+  });
+
+  document.querySelectorAll("[data-content-src]").forEach((node) => {
+    const value = getContentValue(node.dataset.contentSrc);
+    if (value) {
+      node.setAttribute("src", value);
+    }
+  });
+
+  document.querySelectorAll("[data-content-alt]").forEach((node) => {
+    const value = getContentValue(node.dataset.contentAlt);
+    if (value) {
+      node.setAttribute("alt", value);
+    }
+  });
+
+  document.querySelectorAll("[data-content-poster]").forEach((node) => {
+    const value = getContentValue(node.dataset.contentPoster);
+    if (value) {
+      node.setAttribute("poster", value);
+    }
+  });
+
+  document.querySelectorAll("[data-content-video]").forEach((node) => {
+    const value = getContentValue(node.dataset.contentVideo);
+    if (!value) return;
+
+    node.setAttribute("src", value);
+    const video = node.closest("video");
+    video?.load();
+  });
+
+  document.querySelectorAll("[data-content-href]").forEach((node) => {
+    const value = getContentValue(node.dataset.contentHref);
+    if (value) {
+      node.setAttribute("href", value);
+    }
+  });
+
+  document.querySelectorAll("[data-content-placeholder]").forEach((node) => {
+    const value = getContentValue(node.dataset.contentPlaceholder);
+    if (value) {
+      node.setAttribute("placeholder", value);
+    }
+  });
+
+  document.querySelectorAll("[data-content-bg]").forEach((node) => {
+    const value = getContentValue(node.dataset.contentBg);
+    if (value) {
+      node.style.backgroundImage = `url("${value}")`;
+    }
+  });
+
+  renderContactSelects();
+}
+
+function renderContactSelects() {
+  const countrySelect = document.querySelector("[data-contact-country-options]");
+  const partnershipSelect = document.querySelector("[data-contact-partnership-options]");
+  const formPanel = siteContent.pages.contact.formPanel;
+
+  if (countrySelect) {
+    const placeholder = formPanel.fields.countryPlaceholder || "Selectionner";
+    countrySelect.innerHTML = [
+      `<option value="">${placeholder}</option>`,
+      ...formPanel.countryOptions.map((option) => `<option>${option}</option>`)
+    ].join("");
+  }
+
+  if (partnershipSelect) {
+    const placeholder = formPanel.fields.partnershipPlaceholder || "Selectionner";
+    partnershipSelect.innerHTML = [
+      `<option value="">${placeholder}</option>`,
+      ...formPanel.partnershipOptions.map((option) => `<option>${option}</option>`)
+    ].join("");
+  }
+}
+
 function renderStats() {
   document.querySelectorAll("[data-stat-grid]").forEach((container) => {
-    container.innerHTML = stats
+    container.innerHTML = siteContent.stats
       .map(
-        (item) => `
+        (item, index) => `
           <article class="info-card stat-card reveal">
             <div class="info-card__media card-media">
               <img src="${item.image}" alt="${item.label}" loading="lazy">
@@ -104,6 +249,16 @@ function renderStats() {
               <p class="info-card__eyebrow">Indicateur</p>
               <span class="stat-value">${item.value}</span>
               <h3 class="info-card__title stat-label">${item.label}</h3>
+              ${
+                item.counterValue
+                  ? `
+                    <div class="stat-counter">
+                      <strong data-stat-counter="${index}" data-counter-target="${item.counterValue}">0 FCFA</strong>
+                      <span>${item.counterLabel || "Chiffres du projet"}</span>
+                    </div>
+                  `
+                  : ""
+              }
               <p class="info-card__copy stat-note">${item.note}</p>
             </div>
           </article>
@@ -115,7 +270,7 @@ function renderStats() {
 
 function renderSectorCards() {
   document.querySelectorAll("[data-sector-grid]").forEach((container) => {
-    container.innerHTML = sectorCards
+    container.innerHTML = siteContent.sectorCards
       .map(
         (item) => `
           <article class="info-card sector-card reveal">
@@ -126,7 +281,7 @@ function renderSectorCards() {
               <p class="info-card__eyebrow">${item.eyebrow}</p>
               <h3 class="info-card__title">${item.title}</h3>
               <p class="info-card__copy">${item.copy}</p>
-              <a class="info-card__link" href="${item.href}">Explorer le pôle</a>
+              <a class="info-card__link" href="${item.href}">Explorer le pole</a>
             </div>
           </article>
         `
@@ -137,7 +292,7 @@ function renderSectorCards() {
 
 function renderBrandGrid() {
   document.querySelectorAll("[data-brand-grid]").forEach((container) => {
-    container.innerHTML = companyCards
+    container.innerHTML = siteContent.companyCards
       .map(
         (item) => `
           <article class="info-card brand-card reveal">
@@ -161,7 +316,7 @@ function renderBrandGrid() {
 
 function renderCountryGrid() {
   document.querySelectorAll("[data-country-grid]").forEach((container) => {
-    container.innerHTML = countries
+    container.innerHTML = siteContent.countries
       .map(
         (country) => `
           <article class="info-card country-card reveal" style="--country-accent:${country.accent}">
@@ -200,7 +355,7 @@ function renderCountryGrid() {
 
 function renderCountrySections() {
   document.querySelectorAll("[data-country-sections]").forEach((container) => {
-    container.innerHTML = countries
+    container.innerHTML = siteContent.countries
       .map(
         (country) => `
           <article class="info-card country-detail reveal" id="${country.slug}" style="--country-accent:${country.accent}">
@@ -250,7 +405,7 @@ function renderCountrySections() {
 
 function renderMissionPillars() {
   document.querySelectorAll("[data-mission-pillars]").forEach((container) => {
-    container.innerHTML = missionPillars
+    container.innerHTML = siteContent.missionPillars
       .map(
         (item) => `
           <article class="info-card pillar-card reveal">
@@ -278,7 +433,7 @@ function renderProjectGrids() {
 
     container.innerHTML = keys
       .map((key) => {
-        const project = projectFamilies[key];
+        const project = siteContent.projectFamilies[key];
         if (!project) return "";
 
         return `
@@ -303,7 +458,7 @@ function renderProjectGrids() {
 
 function renderInvestorPillars() {
   document.querySelectorAll("[data-investor-pillars]").forEach((container) => {
-    container.innerHTML = investorPillars
+    container.innerHTML = siteContent.investorPillars
       .map(
         (item) => `
           <article class="info-card investor-card reveal">
@@ -324,7 +479,7 @@ function renderInvestorPillars() {
 
 function renderInvestmentFormats() {
   document.querySelectorAll("[data-investment-formats]").forEach((container) => {
-    container.innerHTML = investmentFormats
+    container.innerHTML = siteContent.investmentFormats
       .map(
         (item) => `
           <article class="info-card pillar-card reveal">
@@ -345,7 +500,7 @@ function renderInvestmentFormats() {
 
 function renderResources() {
   document.querySelectorAll("[data-resource-grid]").forEach((container) => {
-    container.innerHTML = resources
+    container.innerHTML = siteContent.resources
       .map(
         (item) => `
           <article class="info-card resource-card reveal">
@@ -367,7 +522,7 @@ function renderResources() {
 
 function renderContactCards() {
   document.querySelectorAll("[data-contact-cards]").forEach((container) => {
-    container.innerHTML = contactDetails
+    container.innerHTML = siteContent.contactDetails
       .map(
         (item) => `
           <article class="contact-card reveal">
@@ -382,26 +537,33 @@ function renderContactCards() {
 
 function renderCeoSignature() {
   document.querySelectorAll("[data-ceo-name]").forEach((node) => {
-    node.textContent = ceoProfile.name;
+    node.textContent = siteContent.ceoProfile.name;
   });
   document.querySelectorAll("[data-ceo-role]").forEach((node) => {
-    node.textContent = ceoProfile.role;
+    node.textContent = siteContent.ceoProfile.role;
   });
   document.querySelectorAll("[data-ceo-quote]").forEach((node) => {
-    node.textContent = ceoProfile.quote;
+    node.textContent = siteContent.ceoProfile.quote;
   });
+}
+
+function normalizePhoneNumber(value) {
+  return String(value || "").replace(/[^\d]/g, "");
 }
 
 function renderWhatsappButton() {
   if (document.querySelector("[data-whatsapp-float]")) return;
 
+  const phoneNumber = normalizePhoneNumber(siteContent.siteShell.whatsappNumber);
+  if (!phoneNumber) return;
+
   const button = document.createElement("a");
   button.className = "whatsapp-float";
-  button.href = "https://wa.me/22391190615";
+  button.href = `https://wa.me/${phoneNumber}`;
   button.target = "_blank";
   button.rel = "noopener noreferrer";
   button.dataset.whatsappFloat = "true";
-  button.setAttribute("aria-label", "Contacter ATLANTIC HOLDING sur WhatsApp");
+  button.setAttribute("aria-label", `Contacter ${siteContent.siteShell.brand.name} sur WhatsApp`);
   button.innerHTML = `
     <svg class="whatsapp-float__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
       <path fill="currentColor" d="M19.11 17.42c-.27-.13-1.57-.77-1.81-.86-.24-.09-.41-.13-.59.14-.18.27-.68.86-.84 1.04-.15.18-.31.2-.58.07-.27-.13-1.14-.42-2.18-1.33-.8-.71-1.34-1.58-1.49-1.84-.15-.27-.02-.41.11-.54.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.59-1.42-.81-1.94-.21-.51-.43-.44-.59-.45h-.5c-.18 0-.47.07-.71.34-.24.27-.93.91-.93 2.22s.95 2.57 1.08 2.75c.13.18 1.86 2.84 4.5 3.98.63.27 1.13.43 1.52.55.64.2 1.22.17 1.68.1.51-.08 1.57-.64 1.79-1.26.22-.62.22-1.15.15-1.26-.06-.11-.24-.18-.51-.31z"/>
@@ -546,6 +708,47 @@ function setupRevealAnimations() {
   items.forEach((item) => observer.observe(item));
 }
 
+function formatCounterValue(value) {
+  const amount = Number(value) || 0;
+  return `${new Intl.NumberFormat("en-US").format(Math.round(amount))} FCFA`;
+}
+
+function setupStatCounters() {
+  const counters = Array.from(document.querySelectorAll("[data-counter-target]"));
+  if (!counters.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const node = entry.target;
+        const targetValue = Number(node.dataset.counterTarget || "0");
+        const duration = 2200;
+        const startTime = performance.now();
+
+        const tick = (now) => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - (1 - progress) * (1 - progress);
+          node.textContent = formatCounterValue(targetValue * eased);
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            node.textContent = formatCounterValue(targetValue);
+          }
+        };
+
+        requestAnimationFrame(tick);
+        observer.unobserve(node);
+      });
+    },
+    { threshold: 0.45 }
+  );
+
+  counters.forEach((counter) => observer.observe(counter));
+}
+
 function setupContactForm() {
   const form = document.querySelector("[data-contact-form]");
   const feedback = document.querySelector("[data-contact-feedback]");
@@ -556,16 +759,17 @@ function setupContactForm() {
 
     const formData = new FormData(form);
     const values = Object.fromEntries(formData.entries());
+    const recipient = siteContent.pages.contact.formPanel.recipientEmail || siteContent.siteShell.contactEmail;
 
     const subject = encodeURIComponent(
-      `Demande de partenariat - ${values.pays || "ATLANTIC HOLDING"}`
+      `Demande de partenariat - ${values.pays || siteContent.siteShell.brand.name}`
     );
     const body = encodeURIComponent(
       [
-        `Nom : ${values.nom || ""}`,
-        `Email : ${values.email || ""}`,
-        `Telephone : ${values.telephone || ""}`,
-        `Pays : ${values.pays || ""}`,
+        `${formatLabel("nom")} : ${values.nom || ""}`,
+        `${formatLabel("email")} : ${values.email || ""}`,
+        `${formatLabel("telephone")} : ${values.telephone || ""}`,
+        `${formatLabel("pays")} : ${values.pays || ""}`,
         `Type de partenariat : ${values.partenariat || ""}`,
         "",
         "Message :",
@@ -573,16 +777,18 @@ function setupContactForm() {
       ].join("\n")
     );
 
-    feedback.textContent =
-      "Votre demande est prête. Votre messagerie va s'ouvrir pour envoyer le message au groupe.";
-    window.location.href = `mailto:info@goumalo.com?subject=${subject}&body=${body}`;
+    feedback.textContent = siteContent.pages.contact.formPanel.sentMessage;
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
     form.reset();
+    renderContactSelects();
   });
 }
 
-function init() {
+async function init() {
+  await loadSiteContent();
   renderHeader();
   renderFooter();
+  bindContentFields();
   renderStats();
   renderSectorCards();
   renderBrandGrid();
@@ -600,6 +806,7 @@ function init() {
   setupHeaderBehavior();
   setupHeroSlider();
   setupRevealAnimations();
+  setupStatCounters();
   setupContactForm();
 }
 

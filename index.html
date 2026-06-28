@@ -6,7 +6,7 @@
     <title>ATLANTIC HOLDING | Investissement premium en Afrique de l'Ouest</title>
     <meta
       name="description"
-      content="ATLANTIC HOLDING présente des projets d'investissement immobiliers et automobiles au Sénégal, au Mali et en Côte d'Ivoire."
+      content="ATLANTIC HOLDING presente des projets d'investissement immobiliers et automobiles au Senegal, au Mali et en Cote d'Ivoire."
     >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,17 +31,28 @@
               playsinline
               preload="auto"
               poster="assets/images/atlantic-automobile-showroom.jpg"
+              data-content-poster="pages.home.hero.poster"
             >
-              <source src="assets/videos/atlantic-hero.mp4" type="video/mp4">
+              <source src="assets/videos/atlantic-hero.mp4" type="video/mp4" data-content-video="pages.home.hero.video">
             </video>
             <div class="hero-video__overlay">
               <div class="hero-video__content">
-                <h1 class="hero-title">Les grands Projets</h1>
-                <p class="hero-subtitle">100% de Rentabilité</p>
+                <h1 class="hero-title" data-content-text="pages.home.hero.title">Les grands Projets</h1>
+                <p class="hero-subtitle" data-content-text="pages.home.hero.subtitle">100% de Rentabilite</p>
                 <div class="hero-video__rule"></div>
                 <div class="hero-actions hero-actions--hero">
-                  <a class="button button--primary" href="projets.html">Découvrir les projets</a>
-                  <a class="button button--light" href="investisseurs.html#dossier">Devenir partenaire financier</a>
+                  <a
+                    class="button button--primary"
+                    href="projets.html"
+                    data-content-text="pages.home.hero.primaryCta.label"
+                    data-content-href="pages.home.hero.primaryCta.href"
+                  >Decouvrir les projets</a>
+                  <a
+                    class="button button--light"
+                    href="investisseurs.html#dossier"
+                    data-content-text="pages.home.hero.secondaryCta.label"
+                    data-content-href="pages.home.hero.secondaryCta.href"
+                  >Devenir partenaire financier</a>
                 </div>
               </div>
               <div class="hero-video__dots" aria-hidden="true">
@@ -63,23 +74,36 @@
         <div class="section-shell">
           <article class="info-card story-card reveal">
             <div class="info-card__media story-card__media">
-              <img src="assets/images/goumalo-waterfront.jpg" alt="Programme immobilier Goumalo" loading="lazy">
+              <img
+                src="assets/images/goumalo-waterfront.jpg"
+                alt="Programme immobilier Goumalo"
+                loading="lazy"
+                data-content-src="pages.home.groupStory.image"
+                data-content-alt="pages.home.groupStory.title"
+              >
             </div>
             <div class="info-card__body story-card__body">
-              <p class="info-card__eyebrow">Le groupe</p>
-              <h2 class="info-card__title section-title">Une plateforme d'investissement pensée pour la confiance</h2>
-              <p class="info-card__copy">
-                ATLANTIC HOLDING réunit des projets à forte valeur d'usage dans l'immobilier, l'automobile,
-                les services et la restauration. L'ambition est claire : structurer des opérations robustes,
-                lisibles et attractives pour des partenaires financiers internationaux.
+              <p class="info-card__eyebrow" data-content-text="pages.home.groupStory.eyebrow">Le groupe</p>
+              <h2 class="info-card__title section-title" data-content-text="pages.home.groupStory.title">Une plateforme d'investissement pensee pour la confiance</h2>
+              <p class="info-card__copy" data-content-text="pages.home.groupStory.paragraphs.0">
+                ATLANTIC HOLDING reunit des projets a forte valeur d'usage dans l'immobilier, l'automobile et les services.
               </p>
-              <p class="info-card__copy">
-                Entre vision entrepreneuriale, exécution locale et standard premium, le groupe déploie un
-                modèle qui associe actifs tangibles, présence régionale et potentiel de croissance.
+              <p class="info-card__copy" data-content-text="pages.home.groupStory.paragraphs.1">
+                Entre vision entrepreneuriale, execution locale et standard premium, le groupe deploie un modele regional.
               </p>
               <div class="info-card__actions">
-                <a class="info-card__link" href="a-propos.html">Découvrir la vision</a>
-                <a class="info-card__link" href="pays.html">Voir les marchés</a>
+                <a
+                  class="info-card__link"
+                  href="a-propos.html"
+                  data-content-text="pages.home.groupStory.links.0.label"
+                  data-content-href="pages.home.groupStory.links.0.href"
+                >Decouvrir la vision</a>
+                <a
+                  class="info-card__link"
+                  href="pays.html"
+                  data-content-text="pages.home.groupStory.links.1.label"
+                  data-content-href="pages.home.groupStory.links.1.href"
+                >Voir les marches</a>
               </div>
             </div>
           </article>
@@ -90,12 +114,11 @@
         <div class="section-shell">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Nos pôles</p>
-              <h2 class="section-title">Deux moteurs de croissance, une logique de groupe</h2>
+              <p class="eyebrow" data-content-text="pages.home.sectorsIntro.eyebrow">Nos poles</p>
+              <h2 class="section-title" data-content-text="pages.home.sectorsIntro.title">Deux moteurs de croissance, une logique de groupe</h2>
             </div>
-            <p class="section-copy">
-              Le site combine une lecture institutionnelle des projets et une présentation claire des
-              opportunités par activité, afin de faciliter l'analyse des partenaires et investisseurs.
+            <p class="section-copy" data-content-text="pages.home.sectorsIntro.copy">
+              Le site combine une lecture institutionnelle des projets et une presentation claire des opportunites.
             </p>
           </div>
           <div class="sector-grid" data-sector-grid></div>
@@ -106,12 +129,11 @@
         <div class="section-shell">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Empreinte régionale</p>
-              <h2 class="section-title">Trois pays, une trajectoire cohérente</h2>
+              <p class="eyebrow" data-content-text="pages.home.regionsIntro.eyebrow">Empreinte regionale</p>
+              <h2 class="section-title" data-content-text="pages.home.regionsIntro.title">Trois pays, une trajectoire coherente</h2>
             </div>
-            <p class="section-copy">
-              Sénégal, Mali et Côte d'Ivoire concentrent des besoins urbains, commerciaux et de services
-              compatibles avec le positionnement premium du groupe.
+            <p class="section-copy" data-content-text="pages.home.regionsIntro.copy">
+              Senegal, Mali et Cote d'Ivoire concentrent des besoins urbains et commerciaux compatibles avec le positionnement premium du groupe.
             </p>
           </div>
           <div class="country-grid" data-country-grid></div>
@@ -122,12 +144,11 @@
         <div class="section-shell">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Entreprises</p>
-              <h2 class="section-title">Des marques complémentaires au service d'une même ambition</h2>
+              <p class="eyebrow" data-content-text="pages.home.brandsIntro.eyebrow">Entreprises</p>
+              <h2 class="section-title" data-content-text="pages.home.brandsIntro.title">Des marques complementaires au service d'une meme ambition</h2>
             </div>
-            <p class="section-copy">
-              Chaque entreprise joue un rôle précis dans la chaîne de valeur, du développement immobilier à
-              l'expérience automobile et au service après-vente.
+            <p class="section-copy" data-content-text="pages.home.brandsIntro.copy">
+              Chaque entreprise joue un role precis dans la chaine de valeur du groupe.
             </p>
           </div>
           <div class="brand-grid" data-brand-grid></div>
@@ -138,10 +159,16 @@
         <div class="section-shell">
           <article class="info-card story-card reveal">
             <div class="info-card__media story-card__media">
-              <img src="assets/images/mixed-tower.jpg" alt="Actif emblématique du groupe" loading="lazy">
+              <img
+                src="assets/images/mixed-tower.jpg"
+                alt="Actif emblematique du groupe"
+                loading="lazy"
+                data-content-src="pages.home.ceoStory.image"
+                data-content-alt="ceoProfile.name"
+              >
             </div>
             <div class="info-card__body story-card__body">
-              <p class="info-card__eyebrow">Vision du CEO</p>
+              <p class="info-card__eyebrow" data-content-text="pages.home.ceoStory.eyebrow">Vision du CEO</p>
               <blockquote class="quote-card__quote" data-ceo-quote></blockquote>
               <div class="quote-card__meta">
                 <strong data-ceo-name></strong>
@@ -157,13 +184,17 @@
           <div class="cta-banner reveal">
             <div class="cta-banner__grid">
               <div>
-                <h2>Opportunités pour partenaires financiers</h2>
-                <p>
-                  ATLANTIC HOLDING recherche des partenaires capables d'accompagner des projets immobiliers,
-                  automobiles, de services et de restauration à l'échelle de l'Afrique de l'Ouest.
+                <h2 data-content-text="pages.home.investorsCta.title">Opportunites pour partenaires financiers</h2>
+                <p data-content-text="pages.home.investorsCta.copy">
+                  ATLANTIC HOLDING recherche des partenaires capables d'accompagner des projets immobiliers et automobiles a l'echelle de l'Afrique de l'Ouest.
                 </p>
               </div>
-              <a class="button button--light" href="investisseurs.html#dossier">Accéder à la page investisseurs</a>
+              <a
+                class="button button--light"
+                href="investisseurs.html#dossier"
+                data-content-text="pages.home.investorsCta.button.label"
+                data-content-href="pages.home.investorsCta.button.href"
+              >Acceder a la page investisseurs</a>
             </div>
           </div>
         </div>
@@ -173,4 +204,4 @@
     <footer class="site-footer" data-site-footer></footer>
     <script type="module" src="assets/js/site.js"></script>
   </body>
-  </html>
+</html>

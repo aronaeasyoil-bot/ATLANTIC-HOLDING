@@ -740,6 +740,24 @@ main {
   color: var(--slate-600);
 }
 
+.stat-counter {
+  display: grid;
+  gap: 4px;
+  margin: 14px 0 14px;
+}
+
+.stat-counter strong {
+  font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.stat-counter span {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .split-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
@@ -1717,6 +1735,14 @@ main {
   font-size: clamp(3rem, 6vw, 4.8rem);
   font-family: "Manrope", sans-serif;
   font-weight: 800;
+}
+
+.info-card.stat-card .stat-counter strong {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.info-card.stat-card .stat-counter span {
+  color: rgba(191, 231, 239, 0.82);
 }
 
 .info-card.stat-card .stat-label,
