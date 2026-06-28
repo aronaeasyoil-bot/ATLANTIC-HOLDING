@@ -1528,11 +1528,16 @@ main {
   }
 
   .section {
-    padding: 80px 0;
+    padding: 54px 0;
   }
 
   .section--tight {
-    padding: 62px 0;
+    padding: 40px 0;
+  }
+
+  .section-head {
+    margin-bottom: 24px;
+    gap: 18px;
   }
 
   .stat-showcase {
@@ -1567,6 +1572,19 @@ main {
 @media (max-width: 560px) {
   :root {
     --header-height: 84px;
+  }
+
+  .section {
+    padding: 42px 0;
+  }
+
+  .section--tight {
+    padding: 30px 0;
+  }
+
+  .section-head {
+    margin-bottom: 18px;
+    gap: 14px;
   }
 
   .site-nav {
@@ -2135,10 +2153,31 @@ body[data-page="accueil"] .hero-video__dot--active {
   background: rgba(255, 255, 255, 0.92);
 }
 
-body[data-page="accueil"] .stat-showcase {
+body[data-page="accueil"] .section.section--tight.stat-showcase {
   margin-top: 0;
-  padding-top: 20px;
+  padding: 20px 0 18px;
   background: var(--white);
+}
+
+body[data-page="accueil"] .section {
+  padding: 58px 0;
+}
+
+body[data-page="accueil"] .section--tight {
+  padding: 40px 0;
+}
+
+body[data-page="accueil"] .section-head {
+  margin-bottom: 26px;
+  gap: 20px;
+}
+
+body[data-page="accueil"] main > .section + .section {
+  padding-top: 34px;
+}
+
+body[data-page="accueil"] main > .stat-showcase + .section {
+  padding-top: 12px;
 }
 
 .page-hero + .section {
@@ -2225,8 +2264,29 @@ body[data-page="accueil"].show-whatsapp .whatsapp-float {
     min-height: 100svh;
   }
 
-  body[data-page="accueil"] .stat-showcase {
-    padding-top: 16px;
+  body[data-page="accueil"] .section.section--tight.stat-showcase {
+    padding: 16px 0 12px;
+  }
+
+  body[data-page="accueil"] .section {
+    padding: 40px 0;
+  }
+
+  body[data-page="accueil"] .section--tight {
+    padding: 26px 0;
+  }
+
+  body[data-page="accueil"] .section-head {
+    margin-bottom: 18px;
+    gap: 14px;
+  }
+
+  body[data-page="accueil"] main > .section + .section {
+    padding-top: 24px;
+  }
+
+  body[data-page="accueil"] main > .stat-showcase + .section {
+    padding-top: 8px;
   }
 
   .page-hero + .section {
@@ -2272,6 +2332,31 @@ body[data-page="accueil"].show-whatsapp .whatsapp-float {
   body[data-page="accueil"] .hero-actions--hero .button {
     min-height: 50px;
     font-size: 0.84rem;
+  }
+
+  body[data-page="accueil"] .section.section--tight.stat-showcase {
+    padding: 12px 0 8px;
+  }
+
+  body[data-page="accueil"] .section {
+    padding: 30px 0;
+  }
+
+  body[data-page="accueil"] .section--tight {
+    padding: 20px 0;
+  }
+
+  body[data-page="accueil"] .section-head {
+    margin-bottom: 14px;
+    gap: 12px;
+  }
+
+  body[data-page="accueil"] main > .section + .section {
+    padding-top: 18px;
+  }
+
+  body[data-page="accueil"] main > .stat-showcase + .section {
+    padding-top: 4px;
   }
 
   .page-hero + .section {
