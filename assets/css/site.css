@@ -1890,6 +1890,115 @@ main {
   letter-spacing: 0.12em;
 }
 
+.info-card.story-card .story-card__media,
+.info-card.brand-card .card-media,
+.info-card.country-card .country-card__media,
+.info-card.country-detail .country-detail__media,
+.info-card.pillar-card .card-media,
+.info-card.investor-card .card-media,
+.info-card.resource-card .card-media,
+.info-card.gallery-card .card-media,
+.info-card.project-card .project-card__media {
+  position: relative;
+  inset: auto;
+  height: 270px;
+  min-height: 270px;
+  background: none;
+  box-shadow: none;
+}
+
+.info-card.story-card .story-card__media img,
+.info-card.brand-card .card-media img,
+.info-card.country-card .country-card__media img,
+.info-card.country-detail .country-detail__media img,
+.info-card.pillar-card .card-media img,
+.info-card.investor-card .card-media img,
+.info-card.resource-card .card-media img,
+.info-card.gallery-card .card-media img,
+.info-card.project-card .project-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.info-card.story-card .story-card__body,
+.info-card.brand-card .brand-card__body,
+.info-card.country-card .country-card__body,
+.info-card.country-detail .country-detail__content,
+.info-card.pillar-card .pillar-card__body,
+.info-card.investor-card .investor-card__body,
+.info-card.resource-card .resource-card__body,
+.info-card.gallery-card .info-card__body,
+.info-card.project-card .project-card__body {
+  justify-content: flex-start;
+  gap: 18px;
+  min-height: 300px;
+  padding: 28px 20px 26px;
+}
+
+.info-card.story-card .section-title,
+.info-card.brand-card .info-card__title,
+.info-card.country-card .info-card__title,
+.info-card.country-detail .info-card__title,
+.info-card.pillar-card .info-card__title,
+.info-card.investor-card .info-card__title,
+.info-card.resource-card .info-card__title,
+.info-card.gallery-card .info-card__title,
+.info-card.project-card .info-card__title {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(2.3rem, 3.8vw, 3.4rem);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.info-card.story-card .info-card__copy,
+.info-card.brand-card .info-card__copy,
+.info-card.country-card .info-card__copy,
+.info-card.country-detail .info-card__copy,
+.info-card.pillar-card .info-card__copy,
+.info-card.investor-card .info-card__copy,
+.info-card.resource-card .info-card__copy,
+.info-card.project-card .info-card__copy {
+  color: rgba(233, 237, 246, 0.8);
+}
+
+.info-card.story-card .info-card__actions,
+.info-card.resource-card .info-card__link,
+.info-card.project-card .feature-list,
+.info-card.country-card .entity-list,
+.info-card.country-detail .entity-list,
+.info-card.country-detail .mini-logo-row {
+  margin-top: auto;
+}
+
+.info-card.brand-card .brand-card__logo {
+  width: 132px;
+  height: 88px;
+  margin: 0 0 4px;
+  padding: 16px;
+}
+
+.info-card.country-card .country-card__head,
+.info-card.country-detail .country-card__head {
+  align-items: center;
+}
+
+.info-card.country-card .entity-list,
+.info-card.country-detail .entity-list,
+.info-card.project-card .feature-list {
+  margin-bottom: 0;
+}
+
+.info-card.gallery-card .info-card__body {
+  min-height: 220px;
+}
+
+.info-card.gallery-card .info-card__title {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
 .info-card.project-card,
 .info-card.country-detail {
   display: flex;
@@ -1964,9 +2073,14 @@ main {
 
   .story-card__media,
   .info-card.sector-card .sector-card__image,
+  .info-card.brand-card .card-media,
   .info-card.project-card .project-card__media,
   .info-card.country-detail .country-detail__media,
-  .info-card.country-card .country-card__media {
+  .info-card.country-card .country-card__media,
+  .info-card.pillar-card .card-media,
+  .info-card.investor-card .card-media,
+  .info-card.resource-card .card-media,
+  .info-card.gallery-card .card-media {
     height: 220px;
     min-height: 220px;
   }
@@ -1985,6 +2099,18 @@ main {
   }
 
   .info-card.sector-card .sector-card__body {
+    min-height: auto;
+  }
+
+  .info-card.story-card .story-card__body,
+  .info-card.brand-card .brand-card__body,
+  .info-card.country-card .country-card__body,
+  .info-card.country-detail .country-detail__content,
+  .info-card.pillar-card .pillar-card__body,
+  .info-card.investor-card .investor-card__body,
+  .info-card.resource-card .resource-card__body,
+  .info-card.gallery-card .info-card__body,
+  .info-card.project-card .project-card__body {
     min-height: auto;
   }
 
