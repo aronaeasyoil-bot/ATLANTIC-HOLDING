@@ -33,7 +33,7 @@ export const defaultSiteContent = {
         poster: "assets/images/atlantic-automobile-showroom.jpg",
         primaryCta: {
           label: "Decouvrir les projets",
-          href: "projets.html"
+          href: "projets.html#grands-projets"
         },
         secondaryCta: {
           label: "Devenir partenaire financier",
@@ -140,6 +140,12 @@ export const defaultSiteContent = {
         copy:
           "Une presentation claire des poles de croissance d'ATLANTIC HOLDING, concue pour faciliter la lecture investisseur et la comprehension des complementarites operationnelles.",
         backgroundImage: "assets/images/atlantic-automobile-showroom.jpg"
+      },
+      signatureIntro: {
+        eyebrow: "Grands projets",
+        title: "Trois projets structurants au coeur de la these ATLANTIC HOLDING",
+        copy:
+          "Ces actifs signatures ont ete penses pour combiner effet vitrine, profondeur commerciale, potentiel de valorisation et capacite d'attraction pour des partenaires financiers de long terme."
       },
       pillarsIntro: {
         eyebrow: "Poles principaux",
@@ -549,6 +555,77 @@ export const defaultSiteContent = {
       image: "assets/images/restaurant-twilight.jpg"
     }
   ],
+  flagshipDevelopments: [
+    {
+      slug: "bamako-mall",
+      eyebrow: "Bamako | Mali",
+      title: "Grand Mall de Bamako",
+      image: "assets/images/mixed-tower.jpg",
+      badge: "Actif commercial et residentiel signature",
+      summary:
+        "Le Grand Mall de Bamako est concu comme une plateforme mixte de reference associant commerce organise, restauration destination, appartements premium et espaces de vie a fort trafic. Le projet vise un actif visible, monetable et structurant pour capter a la fois des revenus locatifs recurrents, des flux commerciaux et une forte valorisation immobiliere.",
+      metrics: [
+        { label: "Investissement prevu", value: "25 milliards FCFA" },
+        { label: "CA previsionnel", value: "45 milliards FCFA" },
+        { label: "Programme commercial", value: "150+ boutiques" },
+        { label: "Mix d'usage", value: "Restaurants, loisirs, appartements" }
+      ],
+      highlights: [
+        "Ancrage commercial capable d'attirer des enseignes locomotives, des franchises premium et des commercants a fort debit.",
+        "Food court, restaurants signatures et espaces de destination concus pour prolonger le temps de visite et augmenter la depense moyenne.",
+        "Composante residentielle integree pour diversifier les revenus et soutenir la valeur patrimoniale du site sur le long terme.",
+        "Lecture investisseur simple : actif mixte, flux diversifies, potentiel de valorisation et effet signal a l'echelle de Bamako."
+      ],
+      investorNote:
+        "La these d'investissement repose sur un actif visible, multi-revenus et scalable, avec un potentiel de leadership commercial sur un marche encore sous-structure en retail moderne."
+    },
+    {
+      slug: "abidjan-vfa-tower",
+      eyebrow: "Cote d'Ivoire | Abidjan",
+      title: "Tour premium VFA d'Abidjan",
+      image: "assets/images/goumalo-waterfront.jpg",
+      badge: "Commercialisation structuree par VFA",
+      summary:
+        "Cette tour premium en Cote d'Ivoire est pensee comme un produit de commercialisation haut de gamme, adosse a un mecanisme VFA qui permet d'orchestrer la pre-commercialisation, la collecte progressive de tresorerie et la montee en valeur du projet. L'actif cible une clientele patrimoniale, corporate et investisseur a la recherche d'un produit vertical de standing.",
+      metrics: [
+        { label: "Investissement prevu", value: "11 milliards FCFA" },
+        { label: "CA previsionnel", value: "37 milliards FCFA" },
+        { label: "Modele de sortie", value: "VFA" },
+        { label: "Positionnement", value: "Tour mixte premium" }
+      ],
+      highlights: [
+        "Commercialisation par tranches permettant de securiser la tresorerie, d'optimiser la vitesse de vente et de lisser le risque d'execution.",
+        "Produit vertical premium adapte a une demande ivoirienne soutenue sur les segments residences de standing, bureaux et lots patrimoniaux.",
+        "Argument d'adresse et de rarete renforcant la valeur percue du projet aupres d'acquereurs finaux et d'investisseurs avertis.",
+        "Capacite a attirer des partenaires bancaires, institutionnels et commerciaux sur un actif lisible, monetable et rapidement pre-commercialisable."
+      ],
+      investorNote:
+        "Le projet se distingue par une forte elasticite commerciale : il combine profondeur de marche, modele VFA defensif et creation de valeur importante entre investissement et chiffre d'affaires cible."
+    },
+    {
+      slug: "dakar-signature-tower",
+      eyebrow: "Senegal | Dakar",
+      title: "Grande tour signature de Dakar",
+      image: "assets/images/goumalo-residence-tower.jpg",
+      badge: "Projet vitrine a forte valeur patrimoniale",
+      summary:
+        "La grande tour signature de Dakar porte une logique de vitrine regionale et de creation d'un actif iconique dans un marche urbain visible et mature. Le projet ambitionne de reunir residences premium, bureaux, services et experiences de vie dans un ensemble vertical lisible pour des investisseurs cherchant exposition patrimoniale, rendement et prestige de marque.",
+      metrics: [
+        { label: "Investissement prevu", value: "15 milliards FCFA" },
+        { label: "Positionnement", value: "Plus grand immeuble de Dakar" },
+        { label: "Programme", value: "Bureaux, residences, services" },
+        { label: "Monetisation", value: "Ventes, loyers, services associes" }
+      ],
+      highlights: [
+        "Actif signal a forte visibilite, capable de renforcer immediatement la notoriete du groupe et la credibilite du pipeline ATLANTIC HOLDING.",
+        "Programme mixte premium permettant de croiser revenus de commercialisation, loyers potentiels et valorisation patrimoniale de long terme.",
+        "Lecture claire pour les partenaires : produit emblématique, emplacement vitrine et potentiel d'adossement a une clientele corporate et residentielle exigeante.",
+        "Capacite de servir de reference regionale pour le groupe, avec un impact direct sur l'image, l'attraction de partenaires et la profondeur commerciale."
+      ],
+      investorNote:
+        "Le projet Senegal joue un role de flagship : au-dela de l'actif, il installe ATLANTIC HOLDING dans une categorie premium et facilite la mobilisation de partenaires financiers sur l'ensemble du portefeuille."
+    }
+  ],
   projectFamilies: {
     immobilier: {
       eyebrow: "Pole immobilier",
@@ -704,6 +781,7 @@ export const sectorCards = defaultSiteContent.sectorCards;
 export const companyCards = defaultSiteContent.companyCards;
 export const countries = defaultSiteContent.countries;
 export const missionPillars = defaultSiteContent.missionPillars;
+export const flagshipDevelopments = defaultSiteContent.flagshipDevelopments;
 export const projectFamilies = defaultSiteContent.projectFamilies;
 export const investorPillars = defaultSiteContent.investorPillars;
 export const investmentFormats = defaultSiteContent.investmentFormats;

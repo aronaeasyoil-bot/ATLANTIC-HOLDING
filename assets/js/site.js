@@ -426,6 +426,51 @@ function renderMissionPillars() {
   });
 }
 
+function renderFlagshipDevelopments() {
+  document.querySelectorAll("[data-flagship-projects]").forEach((container) => {
+    container.innerHTML = (siteContent.flagshipDevelopments || [])
+      .map(
+        (project) => `
+          <article class="info-card signature-project-card reveal" id="${project.slug}">
+            <div class="info-card__media signature-project__media">
+              <img src="${project.image}" alt="${project.title}" loading="lazy">
+            </div>
+            <div class="info-card__body signature-project__body">
+              <div class="signature-project__header">
+                <div>
+                  <p class="info-card__eyebrow">${project.eyebrow}</p>
+                  <h3 class="info-card__title">${project.title}</h3>
+                </div>
+                <span class="signature-project__badge">${project.badge}</span>
+              </div>
+              <p class="info-card__copy signature-project__summary">${project.summary}</p>
+              <div class="signature-project__metrics">
+                ${(project.metrics || [])
+                  .map(
+                    (metric) => `
+                      <div class="signature-project__metric">
+                        <span>${metric.label}</span>
+                        <strong>${metric.value}</strong>
+                      </div>
+                    `
+                  )
+                  .join("")}
+              </div>
+              <ul class="signature-project__highlights">
+                ${(project.highlights || []).map((item) => `<li>${item}</li>`).join("")}
+              </ul>
+              <div class="signature-project__note">
+                <span>These investisseur</span>
+                <p>${project.investorNote}</p>
+              </div>
+            </div>
+          </article>
+        `
+      )
+      .join("");
+  });
+}
+
 function renderProjectGrids() {
   document.querySelectorAll("[data-project-grid]").forEach((container) => {
     const keys = (container.dataset.projectGrid || "")
@@ -797,6 +842,7 @@ async function init() {
   renderCountryGrid();
   renderCountrySections();
   renderMissionPillars();
+  renderFlagshipDevelopments();
   renderProjectGrids();
   renderInvestorPillars();
   renderInvestmentFormats();

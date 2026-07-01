@@ -1079,6 +1079,135 @@ main {
   gap: 28px;
 }
 
+.signature-projects-grid {
+  display: grid;
+  gap: 28px;
+}
+
+.signature-project-card .signature-project__media {
+  position: relative;
+  inset: auto;
+  height: 320px;
+  min-height: 320px;
+  background: none;
+  box-shadow: none;
+}
+
+.signature-project__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.signature-project__body {
+  gap: 24px;
+  padding: 30px 22px 30px;
+}
+
+.signature-project__header {
+  display: grid;
+  gap: 16px;
+}
+
+.signature-project__badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 10px 14px;
+  border: 1px solid rgba(87, 116, 196, 0.34);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(240, 244, 255, 0.92);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.signature-project__summary {
+  max-width: 70ch;
+  font-size: 1.04rem;
+}
+
+.signature-project__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.signature-project__metric {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid rgba(93, 122, 203, 0.24);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.signature-project__metric span {
+  color: rgba(190, 232, 239, 0.9);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.signature-project__metric strong {
+  color: var(--white);
+  font-size: 1.22rem;
+  line-height: 1.2;
+}
+
+.signature-project__highlights {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.signature-project__highlights li {
+  position: relative;
+  padding-left: 22px;
+  color: rgba(233, 237, 246, 0.82);
+  line-height: 1.72;
+}
+
+.signature-project__highlights li::before {
+  content: "";
+  position: absolute;
+  top: 0.78em;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #38d7df, #7f66ff);
+  transform: translateY(-50%);
+}
+
+.signature-project__note {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  padding: 18px 18px 0;
+  border-top: 1px solid rgba(93, 122, 203, 0.22);
+}
+
+.signature-project__note span {
+  color: rgba(190, 232, 239, 0.9);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.signature-project__note p {
+  margin: 0;
+  color: rgba(240, 244, 255, 0.9);
+  line-height: 1.7;
+}
+
 .project-card {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
@@ -1495,6 +1624,7 @@ main {
 
   .hero-meta,
   .stat-grid,
+  .signature-project__metrics,
   .sector-grid,
   .country-grid,
   .pillars-grid,
@@ -2072,6 +2202,7 @@ main {
   }
 
   .story-card__media,
+  .signature-project-card .signature-project__media,
   .info-card.sector-card .sector-card__image,
   .info-card.brand-card .card-media,
   .info-card.project-card .project-card__media,
@@ -2103,6 +2234,7 @@ main {
   }
 
   .info-card.story-card .story-card__body,
+  .signature-project-card .signature-project__body,
   .info-card.brand-card .brand-card__body,
   .info-card.country-card .country-card__body,
   .info-card.country-detail .country-detail__content,
